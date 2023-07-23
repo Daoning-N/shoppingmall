@@ -1,0 +1,193 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
+
+
+html {
+    width: 100%;
+    font-family: 'Dongle', sans-serif;
+}
+
+body{
+	
+}
+
+.Light {
+	font-weight:300;
+}
+
+.Regular {
+	font-weight:400;
+}
+
+.Bold {
+	font-weight:700;
+}
+
+
+input{
+    border-radius: 3px;
+    line-height: 35px;
+    font-size: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border:1px solid black;
+    height:35px;
+    border-radius:7px;
+}
+
+
+div {
+    
+    padding-bottom: 8px;
+    
+}
+
+.title {
+    text-align: center;
+    font-weight: 700;
+}
+
+.email input {
+    width: 100%;
+}
+
+.name input {
+    width: 100%;
+    
+}
+
+.password input {
+    width: 100%;
+}
+
+.passwordCheck input {
+    width: 100%;
+}
+
+.phone {
+    display: flex;
+    justify-content: space-between;
+    line-height: 35px;
+    
+}
+
+#phone1 {
+    width: 18%;
+}
+
+#phone2 {
+    width: 18%;
+}
+
+#phone3 {
+    width: 18%;
+}
+
+.address {
+    display: flex;
+    justify-content: space-between;
+    line-height: 35px;
+    
+}
+
+#address1 {
+    width: 18%;
+}
+
+#address2 {
+    width: 30%;
+}
+
+#address3 {
+    width: 30%;
+}
+
+
+input[type="submit"], input[type="reset"]
+	{
+	width: 20%;
+    text-align:center;
+    margin:auto;
+    display:inline-block;
+    margin:5px 7px;
+    background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	}
+
+table{
+	border:1px solid black;
+	border-radius:10px;
+	border-collapse:separate;
+	border-spacing: 0;
+}
+
+tbody {
+	
+}
+
+
+th {
+	border-bottom:1px solid #f8f8f8;
+	border-right:1px solid black;
+	background-color:#f8f8f8;
+	border-collapse:separate;
+	border-spacing: 0;
+}
+
+td {
+	padding-left:10px;
+}
+
+
+.text {
+	top:230px;
+}
+
+p {
+	margin-top:20px;
+	font-weight:500;
+	font-size:15px;
+}
+
+#form_div {
+	position: relative;
+	text-align:center;
+	
+	align:center;
+	margin:0 auto;
+	
+}
+
+.address1 {
+	margin:7px 0px;
+}
+
+#roadAddress {
+	margin:7px 0px;
+}
+
+
+
+#searchAdd{
+	margin-bottom:1px;
+	border:1px solid black;
+	margin-left:3px;
+}
+
+
+h1 {
+	text-align:center;
+	padding: 8px 0px;
+	margin-top:10px;
+}
+
+.error{
+    font-size: 13px;
+    height: 20px;
+    color:red;
+    font-weight: 700;
+}
+

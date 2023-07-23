@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   <mapper namespace="memberboard">
+   <!-- 게시글 전체 조회 -->
+   <select id="memberboardList" resultType="com.memberboard.dto.MemberboardVO">
+      SELECT b.bno, b.title, b.content, b.regdate, b.viewcnt, m.user_name,
+      (SELECT COUNT(*) FROM reply WHERE bno = b.bno) as recnt
+      FROM memberboard b LEFT JOIN user m ON b.writer = m.user_id
+      
+      <include refid="search"></include>
+      ORDER BY b.bno DESC, b.regdate DESC
+      <include refid="pagingFooter"></include>
+   </select>
+   
+   <!-- 게시글 작성 -->
+   <insert id="memberboardInsert">
+      INSERT INTO memberboard(
+      <!-- bno, --> title, content, writer)
+      VALUES (<!-- SELECT NVL(MAX(bno)+1, 1)FROM board), --> #{title}, #{content}, #{writer})
+   </insert>
+   
+   <!-- 게시글 상세보기 -->
+   <select id="memberboardView" resultType="com.memberboard.dto.MemberboardVO">
+      SELECT b.*, m.user_name FROM memberboard b LEFT JOIN 
+      user m ON b.writer = m.user_id WHERE bno = #{bno}
+   </select>
+   
+   <!-- 게시글 조회수 증가 -->
+   <update id="increaseViewcnt">
+      UPDATE memberboard SET viewcnt = viewcnt + 1
+      WHERE bno = #{bno}
+   </update>
+   
+   <!-- 게시글 수정 -->
+   <update id="updateArticle">
+      UPDATE memberboard SET title = #{title}, content = #{content},
+      writer = #{writer} WHERE bno = #{bno}
+   </update>
+   
+   <!-- 게시글 삭제 -->
+   <delete id="deleteAtricle">
+      DELETE FROM memberboard WHERE bno = #{bno}
+   </delete>
+   
+   <!-- 게시글 레코드 갯수 -->
+   <select id="countArticle" resultType="int">
+      SELECT COUNT(*) FROM memberboard b, user m
+
+   
+   <!-- WHERE절을 include 태그로 삽입 -->
+   <include refid="search"></include>
+   
+   </select>
+   <sql id="search">
+      <choose>
+         <!-- 전체검색  -->
+         <when test="searchOption == 'all'">
+            WHERE b.writer = m.user_id
+            AND
+            (user_name like CONCAT('%', #{keyword}, '%')
+            OR content like CONCAT('%', #{keyword}, '%')
+            OR title like CONCAT('%', #{keyword}, '%'))
+         </when>
+         
+         <!-- 부분검색 -->
+         <otherwise>
+         WHERE b.writer = m.user_id
+         AND ${searchOption} like CONCAT('%', #{keyword}, '%')
+         </otherwise>
+      </choose>
+   </sql>
+   
+   <!-- 페이징 sql -->
+
+   <sql id="pagingFooter">
+      LIMIT 10 OFFSET #{start}
+   </sql>
+   
+</mapper>

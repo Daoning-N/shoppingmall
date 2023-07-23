@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="user">
+
+<!-- 회원리스트 -->
+     <select id="userList" resultType="com.user.dto.UserVO">
+        select user_id, user_name, user_phone, user_joindate
+        from user order by user_id
+     </select>
+     
+<!-- 회원 가입 -->
+   <insert id="insertUser" parameterType="com.user.dto.UserVO">
+        insert into user
+           (user_id, user_pw, user_name, user_phone, user_email, user_birth, user_address1, user_address2, user_address3) 
+        values 
+           (#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_email}, #{user_birth}, #{user_address1}, #{user_address2}, #{user_address3})
+     </insert>
+     
+<!-- 중복 체크 -->
+	<select id="idChk" resultType="com.user.dto.UserVO">
+		select user_id from user
+		where user_id = #{user_id}
+	</select>
+
+<!-- 회원 상세보기 -->
+     <select id="viewUser" resultType="com.user.dto.UserVO">
+        select user_id, user_name, user_phone, user_email, user_birth, user_address1,
+        user_address2,user_address3,user_joindate,user_update
+        from user where user_id = #{user_id}
+     </select>
+     
+     <!-- profile -->
+     <select id="profileform" resultType="com.user.dto.UserVO">
+        select user_id, user_name, user_phone, user_email, user_birth, user_address1,
+        user_address2,user_address3,user_joindate,user_update 
+        from user where user_id = #{user_id}
+     </select>
+     
+<!-- 회원정보 수정 -->
+     <update id="updateUser">
+        update user set 
+           user_name=#{user_name}, user_phone=#{user_phone}, user_email=#{user_email}, user_birth=#{user_birth}, user_joindate=user_joindate,
+           user_update=SYSDATE() where user_id=#{user_id}
+     </update>
+     
+<!-- 회원정보 삭제 -->
+     <delete id="deleteUser">
+        delete from user where user_id=#{user_id}
+     </delete>
+     
+<!-- 비밀번호 체크 -->
+     <select id="checkPw" resultType="int">
+        select count(*) from user where user_id=#{user_id} and user_pw=#{user_pw}
+     </select>
+     
+<!-- 관리자 -->
+   <select id="LoginCheck" resultType="String">
+      SELECT user_name
+      FROM user
+      WHERE user_id = #{user_id} AND userPW = #{user_pw}
+   </select>
+</mapper>

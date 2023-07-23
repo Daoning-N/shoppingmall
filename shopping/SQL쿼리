@@ -1,0 +1,432 @@
+-orders (주문)
+
+create table orders (
+order_id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+cart_id int(10) NOT NULL,
+product_id int(10) NOT NULL,
+user_id varchar(50) NOT NULL,
+receive_name varchar(50) NOT NULL,
+receive_phone varchar(50) NOT NULL,
+order_date timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+order_addr1 varchar(100) NOT NULL,
+order_addr2 varchar(100) NOT NULL,
+order_addr3 varchar(100) NOT NULL,
+order_quantity int(20) NOT NULL,
+order_price int(20) NOT NULL,
+order_memo varchar(300) NOT NULL
+);
+
+
+
+
+- admin (관리자)
+
+create table admin (
+    admin_id varchar(50) not null,
+    admin_pw varchar(50) not null,
+    admin_name varchar(50) not null,
+    admin_email varchar(100) default null,
+    admin_joindate timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+    admin_update timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+    )ENGINE=lnnoDB default charset=utf8 collate=utf8_general_ci;
+ 
+ - user(회원)
+ 
+ CREATE TABLE `user` (
+   `user_idx`   int(10)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   `user_id`   varchar(50)   NULL,
+   `user_pw`   varchar(50)   NULL,
+   `user_name`   varchar(50)   NULL,
+   `user_phone`   varchar(50)   NULL,
+   `user_birth`   date   NULL,
+   `user_email`   varchar(255)   NULL,
+   `user_joindate`   timestamp   NULL   DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   `user_active`   varchar(1)   NULL,
+   `user_email_check`   varchar(1)   NULL,
+   `user_address1`   varchar(20)   NULL,
+   `user_address2`   varchar(50)   NULL,
+   `user_address3`   varchar(50)   NULL,
+   `user_grade`   varchar(5)   NULL,
+   `user_update`   timestamp   NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp()
+);
+
+- memberboard(회원전용게시판)
+
+CREATE TABLE `memberboard` (
+   `bno` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `title` varchar(200) NOT NULL,
+   `content` varchar(2000),
+   `writer` varchar(50) NOT NULL,
+   `regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   `viewcnt` int(4) DEFAULT 0
+   );
+
+- cart(장바구니)
+
+CREATE TABLE cart (
+   'cart_id' int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   'user_id' VARCHAR(50) NOT NULL,
+   'product_id' int(4) NOT NULL,
+   'amount' int(4) DEFAULT 0
+);
+
+ALTER TABLE cart ADD CONSTRAINT cart_userid_fk FOREIGN KEY(user_id)
+REFERENCES tbl_member(user_id);
+ALTER TABLE cart ADD CONSTRAINT cart_product_fk FOREIGN KEY(product_id)
+REFERENCES tbl_product(product_id);
+
+- board(자유게시판)-
+
+CREATE TBALE board(
+   bno int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   title varchar(200) NOT NULL,
+   content varchar(2000),
+   writer varchar(50) NOT NULL,
+   regdate timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   viewcnt int(4) DEFAULT 0
+);
+
+- product (상품)
+
+CREATE TABLE tbl_product (
+   `product_id`    int(4) auto_increment,
+   `product_name`  varchar(50),
+   `product_price` int(4) default 0,
+   `product_desc`  varchar(500),
+   `product_url`   varchar(500),
+   primary key(product_id)   
+);
+
+- reply(댓글)
+
+CREATE TABLE `reply` (
+   `rno` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `bno` int(4) NOT NULL,
+   `replytext` varchar(200) NOT NULL,
+   `replyer` varchar(50) NOT NULL,
+   `userName` varchar(50),
+   `regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(), 
+   `updatedate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+);
+
+
+<<<<<<< HEAD
+=============================================================================================
+* User(회원)
+
+CREATE TABLE `user` (
+   `user_idx`   int(10)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   `user_id`   varchar(50)   NULL,
+   `user_pw`   varchar(50)   NULL,
+   `user_name`   varchar(50)   NULL,
+   `user_phone`   varchar(50)   NULL,
+   `user_birth`   date   NULL,
+   `user_email`   varchar(255)   NULL,
+   `user_joindate`   timestamp   NULL   DEFAULT current_timestamp() ON UPDATE current_timestamp,
+   `user_active`   varchar(1)   NULL,
+   `user_email_check`   varchar(1)   NULL,
+   `user_address1`   varchar(20)   NULL,
+   `user_address2`   varchar(50)   NULL,
+   `user_address3`   varchar(50)   NULL,
+   `user_grade`   varchar(5)   NULL,
+   `user_update`   timestamp   NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp
+);
+
+* Product(상품)
+CREATE TABLE `product` (
+   `product_id`   int(10)   NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `product_category`   varchar(255)   NULL,
+   `product_name`   varchar(255)   NULL,
+   `product_img`   varchar(500)   NULL,
+   `product_price`   int(10)   NULL,
+   `product_color`   varchar(50)   NULL,
+   `product_size`   varchar(5)   NULL,
+   `product_desc`   varchar(255)   NULL,
+   `product_stock`   int(10)   NULL,
+   `product_view`   int(10)   NULL,
+   `product_quantity`   int(10)   NULL,
+   `product_delivery_price`   int(10)   NULL,
+   `product_recommend`   int(10)   NULL
+   
+);
+
+* cscenter(-고객게시판/유저게시판)
+CREATE TABLE `cscenter` (
+   `cs_id`   int(10)   NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `cs_type`   varchar(50)   NULL,
+   `cs_title`   varchar(255)   NULL,
+   `cs_context`   varchar(1000)   NULL,
+   `cs_date`   timestamp NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+   `cs_viewcnt`  int(4) NULL,
+   `cs_answer`   varchar(1000)   NULL,
+   `cs_ansdate`   timestamp   NULL,
+   `cs_status`   varchar(10)   NULL,
+   `cs_writer`   varchar(50)   NOT NULL,
+   `cs_recnt`   int(10)  NOT NULL
+);
+
+
+* cart(장바구니)
+CREATE TABLE `cart` (
+   `cart_id`         int(10)   NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `user_id`         varchar(50)   NOT NULL,
+   `user_name`       varchar(50)   NULL,
+   `product_id`      int(10)   NOT NULL,
+   `product_name`    varchar(50) NULL,
+   `cart_price`      int(10)   NULL,      
+   `cart_quantity`   int(10)   NULL,   
+   `product_money`   int(10)      NULL
+);
+
+* image(상품 이미지)
+CREATE TABLE `product_image` (
+   `img_file_id`   int(10)   NOT NULL,
+   `product_id`   int(10)   NOT NULL,
+   `original_file_name`   varchar(255)   NULL,
+   `storage_file_name`   varchar(255)   NULL,
+   `file_size`   int(10)   NULL,
+   `file_createdate`   timestamp   NULL,
+   `thumbnail_file`   varchar(1)   NULL
+);
+
+* product_review(리뷰)
+CREATE TABLE `product_review` (
+   `review_id`   int(10)   NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `order_id`      int(10)   NOT NULL,
+   `review_writer`   int(10)   NOT NULL,
+   `user_id`      varchar(200)    NULL,
+   `review_context`   varchar(1000)   NULL,
+   `review_grade`   varchar(5)   NULL,
+   `review_img`   varchar(300)   NULL,
+   `review_recommend`   int(10)   NULL,
+   `review_comment`   varchar(1000)   NULL,
+   `review_reply`   varchar(1000)   NULL,
+   `review_date`   timestamp   NULL,
+   `review_comment-date`   timestamp   NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+   `review_comment-update`   timestamp   NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+   `review_reply_date`   timestamp   NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+   `review_secret`   varchar(1)   NULL,
+   `review_secret_writer` varchar(500)   NULL
+
+);
+
+
+
+* reply(댓글)
+create table tbl_reply (
+   rno int(4) not null primary key auto_increment,
+   bno int(4) not null,
+   replytext varchar(200) not null,
+   replyer varchar(50) not null,
+   userName varchar(50),
+   regdata timestamp not null default current_timestamp() on update current_timestamp(),
+   updatedata timestamp not null default current_timestamp() on update current_timestamp()
+=======
+=======
+- admin (관리자)
+
+CREATE TABLE `admin` (
+    `admin_id` varchar(50) NOT NULL PRIMARY KEY,
+    `admin_pw` varchar(50) not null,
+    `admin_name` varchar(50) not null,
+    `admin_email` varchar(100) default null,
+    `admin_joindate` timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+    `admin_update` timestamp not null default current_timestamp() ON UPDATE current_timestamp()
+    )ENGINE=INNODB default charset=utf8 collate=utf8_general_ci;
+ 
+ - user(회원)
+ 
+ CREATE TABLE `user` (
+   `user_idx`   int(10)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   `user_id`   varchar(50)   NULL,
+   `user_pw`   varchar(50)   NULL,
+   `user_name`   varchar(50)   NULL,
+   `user_phone`   varchar(50)   NULL,
+   `user_birth`   date   NULL,
+   `user_email`   varchar(255)   NULL,
+   `user_joindate`   timestamp   NULL   DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   `user_active`   varchar(1)   NULL,
+   `user_email_check`   varchar(1)   NULL,
+   `user_address1`   varchar(20)   NULL,
+   `user_address2`   varchar(50)   NULL,
+   `user_address3`   varchar(50)   NULL,
+   `user_grade`   varchar(5)   NULL,
+   `user_update`   timestamp   NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp()
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
+);
+<<<<<<< HEAD
+=======
+
+- memberboard(회원전용게시판)
+
+CREATE TABLE `memberboard` (
+	`bno` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`title` varchar(200) NOT NULL,
+	`content` varchar(2000),
+	`writer` varchar(50) NOT NULL,
+	`regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	`viewcnt` int(4) DEFAULT 0
+	);
+
+- cart(장바구니)
+
+CREATE TABLE cart (
+   `cart_id` int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   `user_id` VARCHAR(50) NOT NULL,
+   `product_id` int(4) NOT NULL,
+   `amount` int(4) DEFAULT 0
+);
+
+ALTER TABLE cart ADD CONSTRAINT cart_userid_fk FOREIGN KEY(user_id)
+REFERENCES `user`(user_id);
+ALTER TABLE cart ADD CONSTRAINT cart_product_fk FOREIGN KEY(product_id)
+REFERENCES product(product_id);
+
+- board(자유게시판)-
+
+CREATE TABLE board(
+   board_id int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   board_title varchar(200) NOT NULL,
+   board_content varchar(2000),
+   board_writer varchar(50) NOT NULL,
+   board_createdate timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   board_viewcnt int(4) DEFAULT 0
+);
+
+- product (상품)
+
+CREATE TABLE product (
+   `product_id`    int(4) auto_increment,
+   `product_name`  varchar(50),
+   `product_price` int(4) default 0,
+   `product_desc`  varchar(500),
+   `product_url`   varchar(500),
+   primary key(product_id)   
+);
+
+- reply(댓글)
+
+CREATE TABLE `reply` (
+   `rno` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `bno` int(4) NOT NULL,
+   `replytext` varchar(200) NOT NULL,
+   `replyer` varchar(50) NOT NULL,
+   `userName` varchar(50),
+   `regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(), 
+   `updatedate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+);
+
+
+=============================================================================================
+* User(회원)
+
+CREATE TABLE `user` (
+	`user_idx`	int(10)	NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`user_id`	varchar(50)	NULL,
+	`user_pw`	varchar(50)	NULL,
+	`user_name`	varchar(50)	NULL,
+	`user_phone`	varchar(50)	NULL,
+	`user_birth`	date	NULL,
+	`user_email`	varchar(255)	NULL,
+	`user_joindate`	timestamp	NULL   DEFAULT current_timestamp() ON UPDATE current_timestamp,
+	`user_active`	varchar(1)	NULL,
+	`user_email_check`	varchar(1)	NULL,
+	`user_address1`	varchar(20)	NULL,
+	`user_address2`	varchar(50)	NULL,
+	`user_address3`	varchar(50)	NULL,
+	`user_grade`	varchar(5)	NULL,
+	`user_update`	timestamp	NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp
+);
+
+* Product(상품)
+CREATE TABLE `product` (
+	`product_id`	int(10)	NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`product_category`	varchar(255)	NULL,
+	`product_name`	varchar(255)	NULL,
+	`product_img`	varchar(500)	NULL,
+	`product_price`	int(10)	NULL,
+	`product_color`	varchar(50)	NULL,
+	`product_size`	varchar(5)	NULL,
+	`product_desc`	varchar(255)	NULL,
+	`product_stock`	int(10)	NULL,
+	`product_view`	int(10)	NULL,
+	`product_quantity`	int(10)	NULL,
+	`product_delivery_price`	int(10)	NULL,
+	`product_recommend`	int(10)	NULL
+	
+);
+
+* cscenter(-고객게시판/유저게시판)
+CREATE TABLE `cscenter` (
+   `cs_id`   int(10)   NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `cs_type`   varchar(50)   NULL,
+   `cs_title`   varchar(255)   NULL,
+   `cs_context`   varchar(1000)   NULL,
+   `cs_date`   timestamp NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+   `cs_viewcnt`  int(4) NULL,
+   `cs_answer`   varchar(1000)   NULL,
+   `cs_ansdate`   timestamp   NULL,
+   `cs_status`   varchar(10)   NULL,
+   `cs_writer`   varchar(50)   NOT NULL,
+   `cs_recnt`   int(10)  NOT NULL
+);
+
+
+* cart(장바구니)
+CREATE TABLE `cart` (
+   `cart_id`         int(10)   NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `user_id`         varchar(50)   NOT NULL,
+   `user_name`       varchar(50)   NULL,
+   `product_id`      int(10)   NOT NULL,
+   `product_name`    varchar(50) NULL,
+   `cart_price`      int(10)   NULL,      
+   `cart_quantity`   int(10)   NULL,   
+   `product_money`   int(10)      NULL
+);
+
+* image(상품 이미지)
+CREATE TABLE `product_image` (
+	`img_file_id`	int(10)	NOT NULL,
+	`product_id`	int(10)	NOT NULL,
+	`original_file_name`	varchar(255)	NULL,
+	`storage_file_name`	varchar(255)	NULL,
+	`file_size`	int(10)	NULL,
+	`file_createdate`	timestamp	NULL,
+	`thumbnail_file`	varchar(1)	NULL
+);
+
+* product_review(리뷰)
+CREATE TABLE `product_review` (
+	`review_id`	int(10)	NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`order_id`		int(10)	NOT NULL,
+	`review_writer`	int(10)	NOT NULL,
+	`user_id`		varchar(200)	 NULL,
+	`review_context`	varchar(1000)	NULL,
+	`review_grade`	varchar(5)	NULL,
+	`review_img`	varchar(300)	NULL,
+	`review_recommend`	int(10)	NULL,
+	`review_comment`	varchar(1000)	NULL,
+	`review_reply`	varchar(1000)	NULL,
+	`review_date`	timestamp	NULL,
+	`review_comment-date`	timestamp	NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+	`review_comment-update`	timestamp	NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+	`review_reply_date`	timestamp	NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+	`review_secret`	varchar(1)	NULL,
+	`review_secret_writer` varchar(500)	NULL
+
+);
+
+
+
+* reply(댓글)
+create table tbl_reply (
+	rno int(4) not null primary key auto_increment,
+	bno int(4) not null,
+	replytext varchar(200) not null,
+	replyer varchar(50) not null,
+	userName varchar(50),
+	regdata timestamp not null default current_timestamp() on update current_timestamp(),
+	updatedata timestamp not null default current_timestamp() on update current_timestamp()
+);
+
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git

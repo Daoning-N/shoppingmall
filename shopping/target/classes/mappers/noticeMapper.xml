@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="notice"><!-- = DAO의 메서드 -->
+
+	<select id="noticeList" resultType="com.notice.dto.NoticeVO"> 
+		SELECT * FROM notice 
+	</select>
+	
+	<insert id="insertNotice"> 
+		INSERT INTO notice (notice_id, notice_title, notice_content) 
+		VALUES (#{notice_id}, #{notice_title}, #{notice_content})
+	</insert>
+	
+	<select id="noticeView" resultType="com.notice.dto.NoticeVO"> 
+			SELECT notice_id, notice_title, notice_content, notice_date FROM notice WHERE notice_id = #{notice_id} 
+	</select>
+	
+	<update id="updateNotice"> 
+			UPDATE notice SET notice_title = #{notice_title}, notice_content = #{notice_content} 
+			WHERE notice_id = #{notice_id} 
+	</update>
+	
+	<delete id="deleteNotice"> 
+			DELETE FROM notice 
+			WHERE notice_id = #{notice_id} 
+	</delete>
+	
+</mapper>
+

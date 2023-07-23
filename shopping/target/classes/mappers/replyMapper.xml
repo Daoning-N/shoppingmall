@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+   <mapper namespace="reply">
+   <!-- 1. 댓글 입력 -->
+     <insert id="insertReply">
+        insert into reply (bno, replytext, replyer, secretReply) 
+        values (#{bno}, #{replytext}, #{replyer}, #{secretReply})
+     </insert>
+     
+     <!-- 2. 댓글 목록 -->
+     <select id="replyList" resultType="com.reply.dto.ReplyVO">
+        SELECT rno, bno, replytext, replyer, r.regdate, r.updatedate, secretReply, m.user_name, 
+        (SELECT writer FROM memberboard WHERE bno = r.bno) AS writer 
+        FROM reply r LEFT JOIN user m ON r.replyer = m.user_id 
+        WHERE r.replyer = m.user_id AND bno=#{bno} 
+        ORDER BY rno
+     <include refid="pagingFooter"/>   
+     </select>
+     
+     <select id="replyDetail" resultType="com.reply.dto.ReplyVO">
+        SELECT rno, bno, replytext, replyer, regdate, updatedate, secretReply FROM reply 
+        WHERE rno = #{rno}
+     </select>
+     
+     <select id="updateReply">
+        UPDATE reply 
+        SET replytext = #{replytext}
+        WHERE rno = #{rno}
+     </select>
+          
+     <delete id="deleteReply">
+        DELETE FROM reply
+        WHERE rno = #{rno}
+     </delete>
+
+   <select id="countReply" resultType="int">
+        SELECT COUNT(*) FROM reply 
+        WHERE bno = #{bno}
+     </select>
+
+   <sql id="pagingFooter">
+       LIMIT 10 OFFSET #{start}
+       
+     </sql>
+     
+  </mapper>

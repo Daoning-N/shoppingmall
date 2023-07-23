@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   <mapper namespace="order">
+	
+	<insert id="insertOrder" parameterType="com.order.dto.OrderVO">
+    INSERT INTO orders (
+    	user_id,
+    	cart_id,
+    	product_id,
+    	order_quantity,
+    	order_price,
+        receive_name,
+        receive_phone, 
+        order_addr1, 
+        order_addr2, 
+        order_addr3, 
+        order_memo, 
+        order_pay)
+        VALUES (
+    	#{user_id}, 
+    	#{cart_id}, 
+    	#{product_id}, 
+    	#{order_quantity},
+    	#{order_price},
+        #{receive_name}, 
+        #{receive_phone}, 
+        #{order_addr1}, 
+        #{order_addr2}, 
+        #{order_addr3}, 
+        #{order_memo}, 
+        #{order_pay})
+	</insert>	
+	
+	<!-- 주문 상품 목록 -->
+	<select id="orderList" parameterType="String" resultType="com.order.dto.OrderVO">
+		SELECT * FROM orders
+			WHERE user_id = #{user_id}
+	</select>
+	
+	<select id="orderDetail" resultType="com.order.dto.OrderVO">
+	  SELECT order_id, cart_id, product_id, user_id, receive_name, receive_phone, order_date,
+  		order_addr1,order_addr2,order_addr3, order_quantity, order_price, order_memo, order_pay
+  		FROM orders WHERE order_id = #{order_id}
+	</select>
+	
+	<!-- 주문 수정 -->
+	<update id="updateOrder" parameterType="com.order.dto.OrderVO">
+	  UPDATE orders
+	  SET receive_name = #{receive_name},
+	      receive_phone = #{receive_phone},
+	      order_addr1 = #{order_addr1},
+	      order_addr2 = #{order_addr2},
+	      order_addr3 = #{order_addr3},
+	      order_memo = #{order_memo}
+	  WHERE order_id = #{order_id}
+	</update>
+	
+	<!-- 주문 삭제 -->
+	<delete id="deleteOrder">
+	  DELETE FROM orders
+	  WHERE order_id = #{order_id}
+	</delete>
+	
+	<delete id="ordercartAllDelete" parameterType="String">
+    DELETE from cart
+    WHERE user_id = #{user_id}
+   </delete>
+	
+  </mapper>

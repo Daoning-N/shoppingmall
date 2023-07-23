@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven></annotation-driven>
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!-- 추가 Start -->
+	<!-- 파일 업로드 용량-->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"/>
+	</beans:bean>
+	<!-- "C:\Users\newtec\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product\" -->
+	<!-- "C:\Users\son94\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product\" -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+	    <beans:constructor-arg value="C:\Users\newtec\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product\"/>
+	</beans:bean>
+	
+	<!-- 관리자 세션체크 -->
+	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
+	
+	<!-- 관리자 세션체크 매핑 -->
+	<interceptors>
+ 	<interceptor>
+ 		<mapping path="/productWrite.do"/>
+ 		<mapping path="/productInsert.do"/>
+ 		<mapping path="/productUpdate.do"/>
+ 		<mapping path="/productEdit.do"/>
+ 		<mapping path="/productDelete.do"/>
+ 		<beans:ref bean="adminInterceptor"/>
+ 	</interceptor>
+ 	</interceptors>
+
+	<!-- 추가 End -->
+	<!-- 메인 -->
+	<context:component-scan base-package="com.shopping.app" />
+	<!-- 유저/고객 -->
+	<context:component-scan base-package="com.user.controller" />
+	<!-- 로그인 -->
+	<context:component-scan base-package="com.login.controller" />
+	<!-- 상품 -->
+	<context:component-scan base-package="com.product.controller" />
+	<!-- 자유게시판 -->
+	<context:component-scan base-package="com.notice.controller" />
+	<!-- 유저/고객게시판 -->
+	<context:component-scan base-package="com.memberboard.controller" />
+	<!-- 장바구니 -->
+	<context:component-scan base-package="com.cart.controller" />
+	<!-- 댓글 -->
+	<context:component-scan base-package="com.reply.controller" />
+	<!-- 관리자 -->
+	<context:component-scan base-package="com.admin.controller" />
+	<!-- 주문 -->
+	<context:component-scan base-package="com.order.controller" />
+	
+	<context:component-scan base-package="com.shopping.aws" />
+</beans:beans>
