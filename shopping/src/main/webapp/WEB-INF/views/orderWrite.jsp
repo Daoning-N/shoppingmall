@@ -17,7 +17,7 @@
     <%@ include file="include/menu.jsp" %>
     <title>주문 페이지</title>
     <script>
-    IMP.init("imp40531637");
+    IMP.init("");
     
     function requestPay() {
       IMP.request_pay({
