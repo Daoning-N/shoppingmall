@@ -17,10 +17,10 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 @EnableWebMvc
 public class AWSConfiguration implements WebMvcConfigurer {
 
-    @Value("AKIA4TIGKFAFMEZHJE4X")
+    @Value("")
     private String accessKey;
 
-    @Value("zadaJXk8HBd8HqtXlhQ4cjX4Tnkn49kCAFXr1CnY")
+    @Value("")
     private String secretKey;
 
     @Bean
