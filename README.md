@@ -1,4 +1,6 @@
 # OTSAJYOO: 옷사줘
+![logo](https://github.com/eun-seong/ttobak/assets/121539291/d63b75d4-5c41-42b7-a8e3-0c808f9f67e6)
+
 
 한 줄 소개: 남성 전용 의류 쇼핑몰
 진행 기간: 2023/03/10 → 2023/06/13
@@ -26,11 +28,12 @@ Skills: AWS, CSS, HTML, JS, JSP, Java, MySQL, Spring
 
 - **개발 환경**
 
-![스크린샷(536).png](OTSAJYOO%20%E1%84%8B%E1%85%A9%E1%86%BA%E1%84%89%E1%85%A1%E1%84%8C%E1%85%AF%20d04219b6a9da4fe8b575458093549353/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7(536).png)
+![스크린샷(536)](https://github.com/eun-seong/ttobak/assets/121539291/15c2e83a-8435-40bb-a1aa-67c73fd3d526)
 
 - **개발 일정**
 
-![스크린샷(540).png](OTSAJYOO%20%E1%84%8B%E1%85%A9%E1%86%BA%E1%84%89%E1%85%A1%E1%84%8C%E1%85%AF%20d04219b6a9da4fe8b575458093549353/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7(540).png)
+![스크린샷(537)](https://github.com/eun-seong/ttobak/assets/121539291/1d4b9b83-4c0f-4d14-8f0c-e278b5bfcc26)
+
 
 ## 🖥 담당한 기능 (**Back-End**)
 
@@ -56,9 +59,7 @@ Skills: AWS, CSS, HTML, JS, JSP, Java, MySQL, Spring
 
 - 팀 내에서 **우수자**에 선정되었습니다.
 
-![KakaoTalk_20230724_183139248.jpg](OTSAJYOO%20%E1%84%8B%E1%85%A9%E1%86%BA%E1%84%89%E1%85%A1%E1%84%8C%E1%85%AF%20d04219b6a9da4fe8b575458093549353/KakaoTalk_20230724_183139248.jpg)
-
-- **더 자세한 프로젝트 설명이 궁금하시면❓**
+- **더 자세한 프로젝트 설명이 궁금하신가요❓**
     
     **Team Member
     Back-End**
@@ -67,16 +68,18 @@ Skills: AWS, CSS, HTML, JS, JSP, Java, MySQL, Spring
     
     - **프로젝트 구성도**
     
-    ![스크린샷(539).png](OTSAJYOO%20%E1%84%8B%E1%85%A9%E1%86%BA%E1%84%89%E1%85%A1%E1%84%8C%E1%85%AF%20d04219b6a9da4fe8b575458093549353/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7(539).png)
+![스크린샷(539)](https://github.com/eun-seong/ttobak/assets/121539291/4af9ec32-498a-4588-8e96-1182fa4c7faf)
+
     
     - **DB_MAP**
     
-    ![스크린샷(537).png](OTSAJYOO%20%E1%84%8B%E1%85%A9%E1%86%BA%E1%84%89%E1%85%A1%E1%84%8C%E1%85%AF%20d04219b6a9da4fe8b575458093549353/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7(537).png)
+![스크린샷(540)](https://github.com/eun-seong/ttobak/assets/121539291/9b635246-a4d0-4c3a-9d91-7c4f56d43c9d)
+
     
     - **Video**
     
-    [https://youtu.be/EdxRxBgh6Hg](https://youtu.be/EdxRxBgh6Hg)
+   [![옷사줘 기능 구현](http://img.youtube.com/vi/EdxRxBgh6Hg/0.jpg)](https://youtu.be/EdxRxBgh6Hg?t=0s)
     
     ### 🧑‍💻자체 평가
     
-    ![스크린샷(541).png](OTSAJYOO%20%E1%84%8B%E1%85%A9%E1%86%BA%E1%84%89%E1%85%A1%E1%84%8C%E1%85%AF%20d04219b6a9da4fe8b575458093549353/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7(541).png)
+![스크린샷(541)](https://github.com/eun-seong/ttobak/assets/121539291/05de5f5f-633f-4714-930d-f5ba6de69d4a)
