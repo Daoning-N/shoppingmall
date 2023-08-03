@@ -72,7 +72,8 @@ Skills: AWS, CSS, HTML, JS, JSP, Java, MySQL, Spring
 
     
     - **Video**
-    
+
+    [클릭시 영상으로 이동]
    [![옷사줘 기능 구현](http://img.youtube.com/vi/EdxRxBgh6Hg/0.jpg)](https://youtu.be/EdxRxBgh6Hg?t=0s)
     
     ### 🧑‍💻자체 평가
