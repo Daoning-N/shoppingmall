@@ -8,12 +8,6 @@ Skills: AWS, CSS, HTML, JS, JSP, Java, MySQL, Spring
 팀 구성: Front-End 1, Back-End 2, Full-stack 1
 관련 활동: AI기반 Computer Vision 융합 웹플랫폼 개발 (https://www.notion.so/AI-Computer-Vision-77396ea229494c77aba128138f5ce6bc?pvs=21)
 
-### 🔗 Link
-
-**Source**
-
-[GitHub - Daoning-N/shoppingmall: 쇼핑몰 프로젝트(Main PJ)](https://github.com/Daoning-N/shoppingmall.git)
-
 ## ✍️ 요약
 
 - **사용 대상**
