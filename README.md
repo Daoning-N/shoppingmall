@@ -42,6 +42,7 @@ Skills: AWS, CSS, HTML, JS, JSP, Java, MySQL, Spring
     - S3 연결
     - 도메인 Route53 연결
 - **Nginx 도메인 연결**
+    - SSL인증서 발급 
 
 ## 💡 느낀점
 
