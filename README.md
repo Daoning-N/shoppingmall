@@ -1,12 +1,13 @@
 # OTSAJYOO: 옷사줘
 ![logo](https://github.com/eun-seong/ttobak/assets/121539291/d63b75d4-5c41-42b7-a8e3-0c808f9f67e6)
+https://otsajyoo.store/ (현재 인스턴스 중지상태 입니다 8ㅅ8)
 
 
-한 줄 소개: 남성 전용 의류 쇼핑몰
-진행 기간: 2023/03/10 → 2023/06/13
-Skills: AWS, CSS, HTML, JS, JSP, Java, MySQL, Spring
-팀 구성: Front-End 1, Back-End 2, Full-stack 1
-관련 활동: AI기반 Computer Vision 융합 웹플랫폼 개발 (https://www.notion.so/AI-Computer-Vision-77396ea229494c77aba128138f5ce6bc?pvs=21)
+# 한 줄 소개: 남성 전용 의류 쇼핑몰
+    -진행 기간: 2023/03/10 → 2023/06/13
+    -Skills: AWS, CSS, HTML, JS, JSP, Java, MySQL, Spring
+    -팀 구성: Front-End 1, Back-End 2, Full-stack 1
+    -관련 활동: AI기반 Computer Vision 융합 웹플랫폼 개발 (https://www.notion.so/AI-Computer-Vision-77396ea229494c77aba128138f5ce6bc?pvs=21)
 
 ## ✍️ 요약
 
