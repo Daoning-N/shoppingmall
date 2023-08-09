@@ -1,6 +1,6 @@
 # OTSAJYOO: 옷사줘
 ![logo](https://github.com/eun-seong/ttobak/assets/121539291/d63b75d4-5c41-42b7-a8e3-0c808f9f67e6)
-https://otsajyoo.store/ (현재 인스턴스 중지상태 입니다 8ㅅ8)
+https://otsajyoo.store/ (현재 인스턴스 중지로 하단 기능구현 영상으로 대체하겠습니다. 죄송합니다.)
 
 
 # 한 줄 소개: 남성 전용 의류 쇼핑몰
